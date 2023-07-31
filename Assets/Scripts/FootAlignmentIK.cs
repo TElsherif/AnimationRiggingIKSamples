@@ -49,12 +49,10 @@ public class FootAlignmentIK : MonoBehaviour
         GetFootTargetPlacement(rightFootDefaultPlacement, false, out Vector3 rightFootPosition,
             out Quaternion rightFootRotation);
 
-        // Adjust height based on difference between foot targets
         float newHeight = originalCharacterHeight -
                           (Mathf.Abs(leftFootTarget.position.y - rightFootTarget.position.y) + footOffset.y);
         newHeight = Mathf.Max(newHeight, minCharacterHeight);
         
-        // Interpolate foot targets and height
         if (useInterpolation)
         {
             leftFootTarget.position = Vector3.Lerp(leftFootTarget.position, leftFootPosition, speed);
@@ -75,46 +73,37 @@ public class FootAlignmentIK : MonoBehaviour
         leftFootIK.weight = WeightInEffect;
         rightFootIK.weight = WeightInEffect;
         
-        // if (IsWalking)
-        // {
-        //     if (IsLeftFootDown)
-        //     {
-        //         leftFootTarget.position = leftFootDebugObject.position;
-        //         LeftFootWeight = 1;
-        //         // Debug.Log("LEFT DOWN");
-        //     }
-        //     else
-        //     {
-        //         GetFootTargetPlacement(leftFootIK.data.tip, true, out leftFootPosition,
-        //         out leftFootRotation);
-        //         leftFootDebugObject.transform.position = leftFootPosition;
-        //         // leftFootDebugObject.transform.rotation = leftFootRotation;
-        //         LeftFootWeight = 0;
-        //     }
-        //     
-        //     if (IsRightFootDown)
-        //     {
-        //         rightFootTarget.position = rightFootDebugObject.position;
-        //         RightFootWeight = 1;
-        //         // Debug.Log("RIGHT DOWN");
-        //     }
-        //     else
-        //     {
-        //         GetFootTargetPlacement(rightFootIK.data.tip, false, out rightFootPosition,
-        //             out rightFootRotation);
-        //         rightFootDebugObject.transform.position = rightFootPosition;
-        //         // rightFootDebugObject.transform.rotation = rightFootRotation;
-        //         RightFootWeight = 0;
-        //     }
-        //     
-        //     leftFootIK.weight = LeftFootWeight;
-        //     rightFootIK.weight = RightFootWeight;
-        // }
-        // else
-        // {
-        //     // Debug.Log("STOPPED");
-        // }
-        
+        if (IsWalking)
+        {
+            if (IsLeftFootDown)
+            {
+                leftFootTarget.position = leftFootDebugObject.position;
+                LeftFootWeight = 1;
+            }
+            else
+            {
+                GetFootTargetPlacement(leftFootIK.data.tip, true, out leftFootPosition,
+                out leftFootRotation);
+                leftFootDebugObject.transform.position = leftFootPosition;
+                LeftFootWeight = 0;
+            }
+            
+            if (IsRightFootDown)
+            {
+                rightFootTarget.position = rightFootDebugObject.position;
+                RightFootWeight = 1;
+            }
+            else
+            {
+                GetFootTargetPlacement(rightFootIK.data.tip, false, out rightFootPosition,
+                    out rightFootRotation);
+                rightFootDebugObject.transform.position = rightFootPosition;
+                RightFootWeight = 0;
+            }
+            
+            leftFootIK.weight = LeftFootWeight;
+            rightFootIK.weight = RightFootWeight;
+        }
     }
 
     private void GetFootTargetPlacement(Transform footIKTarget, bool isLeftFoot, out Vector3 position, out Quaternion rotation)
