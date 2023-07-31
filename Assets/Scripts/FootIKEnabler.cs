@@ -10,8 +10,6 @@ public class FootIKEnabler : MonoBehaviour
     [SerializeField] private FootAlignmentIK footIK;
     [SerializeField] private CharacterController characterController;
 
-    private Vector3 lastPosition;
-
     private void Awake()
     {
         if (footIK == null)
@@ -22,8 +20,6 @@ public class FootIKEnabler : MonoBehaviour
         {
             characterController = GetComponent<CharacterController>();
         }
-
-        lastPosition = transform.position;
     }
 
     private void Update()
@@ -34,12 +30,10 @@ public class FootIKEnabler : MonoBehaviour
         if (speed < 0.5f && characterController.isGrounded)
         {
             footIK.WeightInEffect = 1 - speed;
-            footIK.IsWalking = false;
         }
         else 
         {
             footIK.WeightInEffect = 0;
-            footIK.IsWalking = true;
         }
     }
 }
