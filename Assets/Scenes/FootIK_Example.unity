@@ -1046,7 +1046,7 @@ Transform:
   m_GameObject: {fileID: 797152219}
   serializedVersion: 2
   m_LocalRotation: {x: 0.03570093, y: -0.04995754, z: 0.019575229, w: 0.9979211}
-  m_LocalPosition: {x: -0.017652389, y: 0.41266698, z: 0.028691996}
+  m_LocalPosition: {x: -0.038, y: 0.397, z: 0.236}
   m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1847,7 +1847,7 @@ Transform:
   m_GameObject: {fileID: 1652846771}
   serializedVersion: 2
   m_LocalRotation: {x: 0.035700925, y: -0.049957536, z: 0.01957523, w: 0.9979211}
-  m_LocalPosition: {x: 0.017653128, y: -0.41266692, z: -0.028691677}
+  m_LocalPosition: {x: 0.049, y: -0.389, z: -0.344}
   m_LocalScale: {x: 0.99999934, y: 0.9999996, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2168,7 +2168,13 @@ MonoBehaviour:
   boneSize: 1
   tripodSize: 1
   boneColor: {r: 0, g: 0, b: 1, a: 0.5}
-  m_Transforms: []
+  m_Transforms:
+  - {fileID: 935220355}
+  - {fileID: 595736212}
+  - {fileID: 723666574}
+  - {fileID: 651024629}
+  - {fileID: 682768348}
+  - {fileID: 2093817003}
 --- !u!114 &1762682268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2715,21 +2721,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 1762682271}
-  leftFootIK: {fileID: 0}
-  rightFootIK: {fileID: 0}
-  useInterpolation: 0
+  leftFootIK: {fileID: 593736234}
+  rightFootIK: {fileID: 438922806}
+  useInterpolation: 1
   interpolationSpeed: 10
   minCharacterHeight: 1
-  leftFootDebugObject: {fileID: 129526553}
-  rightFootDebugObject: {fileID: 1734538545}
   leftFootDefaultPlacement: {fileID: 1205154305}
   rightFootDefaultPlacement: {fileID: 16664184}
-  IsWalking: 0
-  IsLeftFootDown: 0
-  IsRightFootDown: 0
   WeightInEffect: 1
-  LeftFootWeight: 0
-  RightFootWeight: 0
 --- !u!114 &1762682274
 MonoBehaviour:
   m_ObjectHideFlags: 0
